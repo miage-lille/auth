@@ -1,0 +1,36 @@
+{
+    "name": "auth",
+    "version": "0.0.1",
+    "description": "An authentication microservice based on JWT strategy",
+    "license": "MPL-2.0",
+    "scripts": {
+        "start": "esy x auth"
+    },
+    "dependencies": {
+        "@opam/dream": "1.0.0~alpha3",
+        "@opam/caqti-driver-postgresql": "*",
+        "@opam/lwt": "*",
+        "@opam/ppx_rapper_lwt": "*",
+        "@opam/ppx_rapper": "*",
+        "@opam/ppx_deriving": "*",
+        "@opam/emile": "*",
+        "@opam/jwto": "*",
+        "@opam/safepass": "*",
+        "@opam/uuidm": "0.9.7"
+    },
+    "devDependencies": {
+        "@opam/dune": "*",
+        "ocaml": ">=4.13",
+        "@opam/ocamlformat": "*",
+        "@opam/ocaml-lsp-server": "*",
+        "@opam/ocamlformat-rpc": "*"
+    },
+    "esy": {
+        "build": "dune build -p #{self.name}",
+        "release": {
+            "releasedBinaries": [
+                "auth"
+            ]
+        }
+    }
+}
