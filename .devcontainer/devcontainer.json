@@ -1,0 +1,28 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+    "name": "Ocaml-esy",
+    "build": {
+        "dockerfile": "Dockerfile",
+    },
+    // Set *default* container specific settings.json values on container create.
+    "settings": {},
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+        "ocamllabs.ocaml-platform"
+    ],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [3000],
+    // Use 'portsAttributes' to set default properties for specific forwarded ports. More info: https://code.visualstudio.com/docs/remote/devcontainerjson-reference.
+    "portsAttributes": {
+        "3000": {
+            "label": "Hello Remote World",
+            "onAutoForward": "notify"
+        }
+    },
+    // Use 'otherPortsAttributes' to configure any ports that aren't configured using 'portsAttributes'.
+    // "otherPortsAttributes": {
+    // 		"onAutoForward": "silent"
+    // },
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "esy install && esy",
+}
