@@ -91,11 +91,11 @@ CREATE TABLE "Member"
 The solution will expose services as a REST/JSON API. 
 
 We will use thoose main modules:
-- `Auth.Domain` (lib/domain.ml) will contain the modules that modelize the core of our application
-- `Auth.Repository` (lib/repository.ml) will contain data repository of our application
-- `Auth.Service` (lib/service.ml) will contain the business services of our application
-- `Auth.Infra` (lib/infra.ml) will contain the communication with the infrastructure
-- `Auth.Api` (lib/api.ml) will contain binding of dependencies and routing description
+- `Auth_lib.Domain` (lib/domain.ml) will contain the modules that modelize the core of our application
+- `Auth_lib.Repository` (lib/repository.ml) will contain data repository of our application
+- `Auth_lib.Service` (lib/service.ml) will contain the business services of our application
+- `Auth_lib.Infra` (lib/infra.ml) will contain the communication with the infrastructure
+- `Auth_lib.Api` (lib/api.ml) will contain binding of dependencies and routing description
 - `Server` (bin/server.ml) will glue all components together to build miage-auth binary, it's our REST server
 
 
@@ -103,6 +103,7 @@ We will use thoose main modules:
 
 The application will require the following envrionment variables:
 - APP_NAME: namespace for the app, must not be an empty string
+- PORT: HTTP port for the app
 - SEED: seed for password hashes
 - JWT_SECRET: secret for JWT signatures
 - LEVEL: logging level
@@ -126,8 +127,9 @@ At the end of this training you should be able to deploy this API.
 
 ### POST /echo
 
-- summary: Echo your request as response, usefull for debuging
-- parameters: body/json     
+- summary: Echo your Autorization as response, usefull for debuging
+- header: 
+    - Autorization: jwt token
 
 ### POST /signup
 
