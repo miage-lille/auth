@@ -61,4 +61,9 @@ let signin_handler request =
     | Ok jwt ->
       Dream.json ~status:`OK @@ to_string @@ `Assoc [("token", `String jwt)])
 
-let routes = [Dream.get "/" hello_handler; Dream.post "/signup" signup_handler]
+let routes =
+  [
+    Dream.get "/" hello_handler;
+    Dream.post "/signup" signup_handler;
+    Dream.post "/signin" signin_handler;
+  ]
