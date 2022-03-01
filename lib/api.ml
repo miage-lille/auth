@@ -1,13 +1,26 @@
 (* This Source Code Form is subject to the terms of the Mozilla Public License,
       v. 2.0. If a copy of the MPL was not distributed with this file, You can
       obtain one at https://mozilla.org/MPL/2.0/ *)
-
 module MemberServive = Service.Member (Repository.Member)
+(** Bind dependencies *)
 
+(** Heartbeat route *)
 let hello_handler _request =
   let open Yojson.Safe in
   Dream.json @@ to_string @@ `Assoc [("message", `String "hello world")]
 
+(** echo the authorization header in body response; for testing purpose *)
+let echo_handler request =
+  let open Yojson.Safe in
+  match Dream.header request "Authorization" with
+  | None ->
+    Dream.json ~status:`Bad_Request
+    @@ to_string
+    @@ `Assoc [("message", `String "No Authorization header")]
+  | Some token ->
+    Dream.json ~status:`OK @@ to_string @@ `Assoc [("token", `String token)]
+
+(** Singnup route *)
 let signup_handler request =
   let open Yojson.Safe.Util in
   let open Util.LwtSyntax in
@@ -64,6 +77,7 @@ let signin_handler request =
 let routes =
   [
     Dream.get "/" hello_handler;
+    Dream.get "/echo" echo_handler;
     Dream.post "/signup" signup_handler;
     Dream.post "/signin" signin_handler;
   ]
