@@ -1,16 +1,21 @@
 (* This Source Code Form is subject to the terms of the Mozilla Public License,
       v. 2.0. If a copy of the MPL was not distributed with this file, You can
       obtain one at https://mozilla.org/MPL/2.0/ *)
+open Infra.Log
+open Util
+
 module MemberServive = Service.Member (Repository.Member)
 (** Bind dependencies *)
 
 (** Heartbeat route *)
 let hello_handler _request =
+  let () = debug "Call hello_handler" in
   let open Yojson.Safe in
   Dream.json @@ to_string @@ `Assoc [("message", `String "hello world")]
 
 (** echo the authorization header in body response; for testing purpose *)
 let echo_handler request =
+  let () = debug "Call echo_handler" in
   let open Yojson.Safe in
   match Dream.header request "Authorization" with
   | None ->
@@ -22,8 +27,9 @@ let echo_handler request =
 
 (** Singnup route *)
 let signup_handler request =
+  let () = debug "Call signup_handler" in
   let open Yojson.Safe.Util in
-  let open Util.LwtSyntax in
+  let open LwtSyntax in
   let* body = Dream.body request in
   let json_res =
     try Ok (Yojson.Safe.from_string body) with
@@ -50,8 +56,9 @@ let signup_handler request =
 
 (** Singnin route *)
 let signin_handler request =
+  let () = debug "Call signin_handler" in
   let open Yojson.Safe.Util in
-  let open Util.LwtSyntax in
+  let open LwtSyntax in
   let* body = Dream.body request in
   let json_res =
     try Ok (Yojson.Safe.from_string body) with
