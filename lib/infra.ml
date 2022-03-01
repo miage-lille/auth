@@ -1,12 +1,13 @@
 (* This Source Code Form is subject to the terms of the Mozilla Public License,
    v. 2.0. If a copy of the MPL was not distributed with this file, You can
    obtain one at https://mozilla.org/MPL/2.0/ *)
+open Util
 
 module Log = struct
   let warn s = Dream.warning @@ fun log -> log s
-  let info s = Dream.warning @@ fun log -> log s
-  let error s = Dream.warning @@ fun log -> log s
-  let debug s = Dream.warning @@ fun log -> log s
+  let info s = Dream.info @@ fun log -> log s
+  let error s = Dream.error @@ fun log -> log s
+  let debug s = Dream.debug @@ fun log -> log s
 end
 
 module Environment = struct
@@ -30,7 +31,7 @@ module Environment = struct
         Log.warn
           "PORT environment variable is not properly set, fallback default \
            value 8080" in
-      8080
+      3000
 
   let hash_seed =
     try Unix.getenv "SEED" with
@@ -51,55 +52,56 @@ module Environment = struct
           "JWT_SECRET environment variable is not set, fallback default value \
            - USE ONLY FOR DEV" in
       "So Long and Thanks For All The Fish"
+  (*
+     let db_url =
+       try Unix.getenv "POSTGRESQL_ADDON_HOST" with
+       | Not_found ->
+         let () =
+           Log.warn
+             "POSTGRESQL_ADDON_HOST environment variable is not set, fallback to \
+              localhost - USE ONLY FOR DEV" in
+         "127.0.0.1"
 
-  let db_url =
-    try Unix.getenv "POSTGRESQL_ADDON_HOST" with
-    | Not_found ->
-      let () =
-        Log.warn
-          "POSTGRESQL_ADDON_HOST environment variable is not set, fallback to \
-           localhost - USE ONLY FOR DEV" in
-      "127.0.0.1"
+     let db_name =
+       try Unix.getenv "POSTGRESQL_ADDON_DB" with
+       | Not_found ->
+         let () =
+           Log.warn
+             "POSTGRESQL_ADDON_DB environment variable is not set fallback to \
+              authdb - USE ONLY FOR DEV" in
+         "authdb"
 
-  let db_name =
-    try Unix.getenv "POSTGRESQL_ADDON_DB" with
-    | Not_found ->
-      let () =
-        Log.warn
-          "POSTGRESQL_ADDON_DB environment variable is not set fallback to \
-           authdb - USE ONLY FOR DEV" in
-      "authdb"
+     let db_port =
+       try Unix.getenv "POSTGRESQL_ADDON_PORT" with
+       | Not_found ->
+         let () =
+           Log.warn
+             "POSTGRESQL_ADDON_PORT environment variable is not set fallback to \
+              5432 - USE ONLY FOR DEV" in
+         "5432"
 
-  let db_port =
-    try Unix.getenv "POSTGRESQL_ADDON_PORT" with
-    | Not_found ->
-      let () =
-        Log.warn
-          "POSTGRESQL_ADDON_PORT environment variable is not set fallback to \
-           5432 - USE ONLY FOR DEV" in
-      "5432"
+     let db_user =
+       try Unix.getenv "POSTGRESQL_ADDON_USER" with
+       | Not_found ->
+         let () =
+           Log.warn
+             "POSTGRESQL_ADDON_USER environment variable is not set fallback to \
+              postgres - USE ONLY FOR DEV" in
+         "postgres"
 
-  let db_user =
-    try Unix.getenv "POSTGRESQL_ADDON_USER" with
-    | Not_found ->
-      let () =
-        Log.warn
-          "POSTGRESQL_ADDON_USER environment variable is not set fallback to \
-           postgres - USE ONLY FOR DEV" in
-      "postgres"
+     let db_password =
+       try Unix.getenv "POSTGRESQL_ADDON_PASSWORD" with
+       | Not_found ->
+         let () =
+           Log.warn
+             "POSTGRESQL_ADDON_PASSWORD environment variable is not set, fallback \
+              to empty - USE ONLY FOR DEV" in
+         "" *)
 
-  let db_password =
-    try Unix.getenv "POSTGRESQL_ADDON_PASSWORD" with
-    | Not_found ->
-      let () =
-        Log.warn
-          "POSTGRESQL_ADDON_PASSWORD environment variable is not set, fallback \
-           to empty - USE ONLY FOR DEV" in
-      ""
-
-  let db_uri =
-    Printf.sprintf "postgresql://%s:%s@%s:%s/%s" db_user db_password db_url
-      db_port db_name
+  let db_uri = "sqlite3:auth.db"
+  (* "postgresql://uqlbc7fqmjjpsqxfresu:hW67hTX5NDujwUAJHfRU@mydb.com:5432/b92juhe84uugdnpozzda" *)
+  (* Printf.sprintf "postgresql://%s:%s@%s:%s/%s" db_user db_password db_url
+     db_port db_name *)
 
   let log_level =
     let fallback_to_debug () =

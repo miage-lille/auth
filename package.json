@@ -9,6 +9,7 @@
     "dependencies": {
         "@opam/dream": "1.0.0~alpha3",
         "@opam/caqti-driver-postgresql": "*",
+        "@opam/caqti-driver-sqlite3": "*",
         "@opam/lwt": "*",
         "@opam/ppx_rapper_lwt": "*",
         "@opam/ppx_rapper": "*",

@@ -26,3 +26,6 @@ setup.log
 .merlin
 .vscode
 *.install
+
+*.db
+*.sqlite

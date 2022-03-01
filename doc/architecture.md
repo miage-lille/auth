@@ -66,16 +66,16 @@ From the stories we can extract a common business langage from the domain:
 
 ## An entities overview
 
-We will use PosgreSQL to store our datas. 
+We will use SQLlite to store our datas. 
 
-### Task 1:  create a `dbauth` database on local or with a free addon on Clever Cloud
+### Task 1:  create a `auth.db` database on local
 
 We need a `Member` table to store our members. Nothing tricky about you should be accurate of this kind of table:
 
 ```sql
 CREATE TABLE "Member"
 (
-    id UUID PRIMARY KEY NOT NULL,
+    id TEXT PRIMARY KEY NOT NULL,
     email TEXT NOT NULL UNIQUE,
     hash TEXT NOT NULL,
     username TEXT
@@ -107,11 +107,7 @@ The application will require the following envrionment variables:
 - SEED: seed for password hashes
 - JWT_SECRET: secret for JWT signatures
 - LEVEL: logging level
-- POSTGRESQL_ADDON_HOST: host of the postgresql database
-- POSTGRESQL_ADDON_DB: name of the postgresql database
-- POSTGRESQL_ADDON_PORT: name of the postgresql database
-- POSTGRESQL_ADDON_USER: username for the postgresql database connection
-- POSTGRESQL_ADDON_PASSWORD: password for the postgresql database connection
+- DB_URI: name of the sqlite database
 
 Some have a default value, see [lib/infra.ml](../lib/infra.ml)
 

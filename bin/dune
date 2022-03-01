@@ -1,4 +1,4 @@
 (executable
  (name server)
  (public_name auth)
- (libraries dream auth.lib))
+ (libraries dream auth.lib caqti-driver-sqlite3))

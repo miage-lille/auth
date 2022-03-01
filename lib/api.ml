@@ -18,16 +18,13 @@ let echo_handler request =
   let () = debug "Call echo_handler" in
   let open Yojson.Safe in
   match Dream.header request "Authorization" with
-  | None ->
-    Dream.json ~status:`Bad_Request
-    @@ to_string
-    @@ `Assoc [("message", `String "No Authorization header")]
+  | None -> Dream.json ~status:`Bad_Request "Authorization header required"
   | Some token ->
     Dream.json ~status:`OK @@ to_string @@ `Assoc [("token", `String token)]
 
 (** Singnup route *)
 let signup_handler request =
-  let () = debug "Call signup_handler" in
+  let () = info "Call signup_handler" in
   let open Yojson.Safe.Util in
   let open LwtSyntax in
   let* body = Dream.body request in
@@ -35,24 +32,15 @@ let signup_handler request =
     try Ok (Yojson.Safe.from_string body) with
     | Failure _ -> Error "Invaild JSON Body" in
   match json_res with
-  | Error e ->
-    Dream.json ~status:`Bad_Request
-    @@ to_string
-    @@ `Assoc [("message", `String e)]
+  | Error e -> Dream.json ~status:`Bad_Request e
   | Ok json -> (
     let email = json |> member "email" |> to_string
     and password = json |> member "password" |> to_string in
     let* signup_result =
       Dream.sql request @@ MemberServive.signup ~email ~password in
     match signup_result with
-    | Error e ->
-      Dream.json ~status:`Forbidden
-      @@ to_string
-      @@ `Assoc [("message", `String e)]
-    | Ok _ ->
-      Dream.json ~status:`Created
-      @@ to_string
-      @@ `Assoc [("message", `String "Created")])
+    | Error e -> Dream.json ~status:`Forbidden e
+    | Ok _ -> Dream.json ~status:`Created "")
 
 (** Singnin route *)
 let signin_handler request =
@@ -64,22 +52,15 @@ let signin_handler request =
     try Ok (Yojson.Safe.from_string body) with
     | Failure _ -> Error "Invaild JSON Body" in
   match json_res with
-  | Error e ->
-    Dream.json ~status:`Bad_Request
-    @@ to_string
-    @@ `Assoc [("message", `String e)]
+  | Error e -> Dream.json ~status:`Bad_Request e
   | Ok json -> (
     let email = json |> member "email" |> to_string
     and password = json |> member "password" |> to_string in
     let* signin_result =
       Dream.sql request @@ MemberServive.signin ~email ~password in
     match signin_result with
-    | Error e ->
-      Dream.json ~status:`Forbidden
-      @@ to_string
-      @@ `Assoc [("message", `String e)]
-    | Ok jwt ->
-      Dream.json ~status:`OK @@ to_string @@ `Assoc [("token", `String jwt)])
+    | Error e -> Dream.json ~status:`Forbidden e
+    | Ok jwt -> Dream.json ~status:`OK jwt)
 
 let routes =
   [

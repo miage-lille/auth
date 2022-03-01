@@ -1,6 +1,14 @@
 (library
  (name auth_lib)
  (public_name auth.lib)
- (libraries dream lwt safepass emile uuidm ppx_rapper_lwt jwto)
+ (libraries
+  dream
+  lwt
+  safepass
+  emile
+  uuidm
+  ppx_rapper_lwt
+  caqti-driver-sqlite3
+  jwto)
  (preprocess
   (pps ppx_deriving.show ppx_deriving.make ppx_rapper)))

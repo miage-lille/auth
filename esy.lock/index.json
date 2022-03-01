@@ -1,5 +1,5 @@
 {
-  "checksum": "4805b66090bb4f5dbdf548aaa1856108",
+  "checksum": "5419acb00e16b8855c9aed1d3b233225",
   "root": "auth@link-dev:./package.json",
   "node": {
     "yarn-pkg-config@github:esy-ocaml/yarn-pkg-config#db3a0b63883606dd57c54a7158d560d6cba8cd79@d41d8cd9": {
@@ -29,6 +29,24 @@
         ]
       },
       "overrides": [],
+      "dependencies": [],
+      "devDependencies": []
+    },
+    "esy-sqlite@archive:https://sqlite.org/2021/sqlite-autoconf-3350500.tar.gz#sha256:f52b72a5c319c3e516ed7a92e123139a6e87af08a2dc43d7757724f6132e6db0@2d70a362": {
+      "id":
+        "esy-sqlite@archive:https://sqlite.org/2021/sqlite-autoconf-3350500.tar.gz#sha256:f52b72a5c319c3e516ed7a92e123139a6e87af08a2dc43d7757724f6132e6db0@2d70a362",
+      "name": "esy-sqlite",
+      "version":
+        "archive:https://sqlite.org/2021/sqlite-autoconf-3350500.tar.gz#sha256:f52b72a5c319c3e516ed7a92e123139a6e87af08a2dc43d7757724f6132e6db0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://sqlite.org/2021/sqlite-autoconf-3350500.tar.gz#sha256:f52b72a5c319c3e516ed7a92e123139a6e87af08a2dc43d7757724f6132e6db0"
+        ]
+      },
+      "overrides": [
+        "esy.lock/overrides/2d70a36290fb3368cba35c704585ed9f/esy.json"
+      ],
       "dependencies": [],
       "devDependencies": []
     },
@@ -117,6 +135,7 @@
         "@opam/lwt@opam:5.5.0@cd185346", "@opam/jwto@opam:0.4.0@aa8ff4c4",
         "@opam/emile@opam:1.1@517476e8",
         "@opam/dream@opam:1.0.0~alpha3@ba0f7685",
+        "@opam/caqti-driver-sqlite3@opam:1.7.0@fc02c36f",
         "@opam/caqti-driver-postgresql@opam:1.7.0@5d8441e1"
       ],
       "devDependencies": [
@@ -457,6 +476,36 @@
         "@opam/dune@opam:3.0.2@5fec5392",
         "@opam/conf-libssl@opam:3@11f68e56",
         "@opam/base-unix@opam:base@87d0b2eb"
+      ]
+    },
+    "@opam/sqlite3@opam:5.1.0@a8dd9a62": {
+      "id": "@opam/sqlite3@opam:5.1.0@a8dd9a62",
+      "name": "@opam/sqlite3",
+      "version": "opam:5.1.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/sha256/bb/bb0db711691a8dfa24fe29ec4ecb6912444ad90e0f4c447af89831e6d1dffea5#sha256:bb0db711691a8dfa24fe29ec4ecb6912444ad90e0f4c447af89831e6d1dffea5",
+          "archive:https://github.com/mmottl/sqlite3-ocaml/releases/download/5.1.0/sqlite3-5.1.0.tbz#sha256:bb0db711691a8dfa24fe29ec4ecb6912444ad90e0f4c447af89831e6d1dffea5"
+        ],
+        "opam": {
+          "name": "sqlite3",
+          "version": "5.1.0",
+          "path": "esy.lock/opam/sqlite3.5.1.0"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.13.1000@d41d8cd9",
+        "@opam/dune-configurator@opam:3.0.2@d5fe1e25",
+        "@opam/dune@opam:3.0.2@5fec5392",
+        "@opam/conf-sqlite3@opam:1@1f218c27",
+        "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.13.1000@d41d8cd9",
+        "@opam/dune-configurator@opam:3.0.2@d5fe1e25",
+        "@opam/dune@opam:3.0.2@5fec5392"
       ]
     },
     "@opam/spawn@opam:v0.15.0@4a27a4cb": {
@@ -2849,6 +2898,32 @@
       "dependencies": [],
       "devDependencies": []
     },
+    "@opam/conf-sqlite3@opam:1@1f218c27": {
+      "id": "@opam/conf-sqlite3@opam:1@1f218c27",
+      "name": "@opam/conf-sqlite3",
+      "version": "opam:1",
+      "source": {
+        "type": "install",
+        "source": [ "no-source:" ],
+        "opam": {
+          "name": "conf-sqlite3",
+          "version": "1",
+          "path": "esy.lock/opam/conf-sqlite3.1"
+        }
+      },
+      "overrides": [
+        {
+          "opamoverride":
+            "esy.lock/overrides/opam__s__conf_sqlite3_opam__c__1_opam_override"
+        }
+      ],
+      "dependencies": [
+        "esy-sqlite@archive:https://sqlite.org/2021/sqlite-autoconf-3350500.tar.gz#sha256:f52b72a5c319c3e516ed7a92e123139a6e87af08a2dc43d7757724f6132e6db0@2d70a362",
+        "@opam/conf-pkg-config@opam:2@85f8644d",
+        "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": []
+    },
     "@opam/conf-postgresql@opam:1@92948608": {
       "id": "@opam/conf-postgresql@opam:1@92948608",
       "name": "@opam/conf-postgresql",
@@ -3035,6 +3110,33 @@
         "@opam/caqti@opam:1.7.0@656be1d2",
         "@opam/alcotest-lwt@opam:1.5.0@f1f00af0",
         "@opam/alcotest@opam:1.5.0@338d9572"
+      ]
+    },
+    "@opam/caqti-driver-sqlite3@opam:1.7.0@fc02c36f": {
+      "id": "@opam/caqti-driver-sqlite3@opam:1.7.0@fc02c36f",
+      "name": "@opam/caqti-driver-sqlite3",
+      "version": "opam:1.7.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/sha256/a3/a363cfcc15f2a3ab9721d08789a65aaa1108d27f974a9b68425a889596e27fb8#sha256:a363cfcc15f2a3ab9721d08789a65aaa1108d27f974a9b68425a889596e27fb8",
+          "archive:https://github.com/paurkedal/ocaml-caqti/releases/download/v1.7.0/caqti-v1.7.0.tbz#sha256:a363cfcc15f2a3ab9721d08789a65aaa1108d27f974a9b68425a889596e27fb8"
+        ],
+        "opam": {
+          "name": "caqti-driver-sqlite3",
+          "version": "1.7.0",
+          "path": "esy.lock/opam/caqti-driver-sqlite3.1.7.0"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.13.1000@d41d8cd9", "@opam/sqlite3@opam:5.1.0@a8dd9a62",
+        "@opam/dune@opam:3.0.2@5fec5392", "@opam/caqti@opam:1.7.0@656be1d2",
+        "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.13.1000@d41d8cd9", "@opam/sqlite3@opam:5.1.0@a8dd9a62",
+        "@opam/dune@opam:3.0.2@5fec5392", "@opam/caqti@opam:1.7.0@656be1d2"
       ]
     },
     "@opam/caqti-driver-postgresql@opam:1.7.0@5d8441e1": {
