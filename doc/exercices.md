@@ -9,7 +9,7 @@ Test signup, signin
 
 ## Exercice 2: Add a verify routes.
 
-Develop POST route `/verify` that validate or not the 
+Develop POST route `/verify` that validate or not the JWT token
 
 ## Exercice 3: Add member routes
 
