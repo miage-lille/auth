@@ -1,6 +1,6 @@
 (library
  (name auth_lib)
  (public_name auth.lib)
- (libraries dream lwt safepass emile uuidm ppx_rapper_lwt)
+ (libraries dream lwt safepass emile uuidm ppx_rapper_lwt jwto)
  (preprocess
   (pps ppx_deriving.show ppx_deriving.make ppx_rapper)))

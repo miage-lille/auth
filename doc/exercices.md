@@ -9,7 +9,7 @@ Test signup, signin
 
 ## Exercice 2: Add a verify routes.
 
-Develop GET, PUT and DELETE routes for `/member/:id`
+Develop POST route `/verify` that validate or not the 
 
 ## Exercice 3: Add member routes
 

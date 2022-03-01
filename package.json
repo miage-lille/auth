@@ -16,12 +16,13 @@
         "@opam/emile": "*",
         "@opam/jwto": "*",
         "@opam/safepass": "*",
+        "@opam/yojson": "*",
         "@opam/uuidm": "0.9.7"
     },
     "devDependencies": {
         "@opam/dune": "*",
         "ocaml": ">=4.13",
-        "@opam/ocamlformat": "*",
+        "@opam/ocamlformat": "0.20.0",
         "@opam/ocaml-lsp-server": "*",
         "@opam/ocamlformat-rpc": "*"
     },

@@ -1,5 +1,5 @@
 {
-  "checksum": "793c870514672c13554e70929663311e",
+  "checksum": "4805b66090bb4f5dbdf548aaa1856108",
   "root": "auth@link-dev:./package.json",
   "node": {
     "yarn-pkg-config@github:esy-ocaml/yarn-pkg-config#db3a0b63883606dd57c54a7158d560d6cba8cd79@d41d8cd9": {
@@ -108,6 +108,7 @@
       },
       "overrides": [],
       "dependencies": [
+        "@opam/yojson@opam:1.7.0@69d87312",
         "@opam/uuidm@opam:0.9.7@bf725775",
         "@opam/safepass@opam:3.1@da7ff931",
         "@opam/ppx_rapper_lwt@opam:3.0.0@9f612253",
@@ -120,8 +121,8 @@
       ],
       "devDependencies": [
         "ocaml@4.13.1000@d41d8cd9",
-        "@opam/ocamlformat-rpc@opam:0.20.1@fc4bcfe8",
-        "@opam/ocamlformat@opam:0.20.1@30a05b69",
+        "@opam/ocamlformat-rpc@opam:0.19.0@8b101245",
+        "@opam/ocamlformat@opam:0.20.0@c60fe68b",
         "@opam/ocaml-lsp-server@opam:1.10.3@c6767d5c",
         "@opam/dune@opam:3.0.2@5fec5392"
       ]
@@ -1003,20 +1004,20 @@
         "ocaml@4.13.1000@d41d8cd9", "@opam/dune@opam:3.0.2@5fec5392"
       ]
     },
-    "@opam/odoc-parser@opam:1.0.0@b1029bdf": {
-      "id": "@opam/odoc-parser@opam:1.0.0@b1029bdf",
+    "@opam/odoc-parser@opam:0.9.0@53bf0585": {
+      "id": "@opam/odoc-parser@opam:0.9.0@53bf0585",
       "name": "@opam/odoc-parser",
-      "version": "opam:1.0.0",
+      "version": "opam:0.9.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/b6/b6aa08ea71a9ebad9b2bebc4da1eda0d713cf3674e6d57d10459d934286e7aa1#sha256:b6aa08ea71a9ebad9b2bebc4da1eda0d713cf3674e6d57d10459d934286e7aa1",
-          "archive:https://github.com/ocaml-doc/odoc-parser/releases/download/1.0.0/odoc-parser-1.0.0.tbz#sha256:b6aa08ea71a9ebad9b2bebc4da1eda0d713cf3674e6d57d10459d934286e7aa1"
+          "archive:https://opam.ocaml.org/cache/sha256/df/df0dad1bad39bf4de6be666c4b63b973bd72eba3b75be9f726317121b5f0bd79#sha256:df0dad1bad39bf4de6be666c4b63b973bd72eba3b75be9f726317121b5f0bd79",
+          "archive:https://github.com/ocaml-doc/odoc-parser/releases/download/0.9.0/odoc-parser-0.9.0.tbz#sha256:df0dad1bad39bf4de6be666c4b63b973bd72eba3b75be9f726317121b5f0bd79"
         ],
         "opam": {
           "name": "odoc-parser",
-          "version": "1.0.0",
-          "path": "esy.lock/opam/odoc-parser.1.0.0"
+          "version": "0.9.0",
+          "path": "esy.lock/opam/odoc-parser.0.9.0"
         }
       },
       "overrides": [],
@@ -1117,20 +1118,20 @@
         "@opam/dune@opam:3.0.2@5fec5392", "@opam/csexp@opam:1.5.1@8a8fb3a7"
       ]
     },
-    "@opam/ocamlformat-rpc@opam:0.20.1@fc4bcfe8": {
-      "id": "@opam/ocamlformat-rpc@opam:0.20.1@fc4bcfe8",
+    "@opam/ocamlformat-rpc@opam:0.19.0@8b101245": {
+      "id": "@opam/ocamlformat-rpc@opam:0.19.0@8b101245",
       "name": "@opam/ocamlformat-rpc",
-      "version": "opam:0.20.1",
+      "version": "opam:0.19.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/7d/7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235#sha256:7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235",
-          "archive:https://github.com/ocaml-ppx/ocamlformat/releases/download/0.20.1/ocamlformat-0.20.1.tbz#sha256:7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235"
+          "archive:https://opam.ocaml.org/cache/sha256/62/62fc46aae8f0a4a33ce7f8d7726d7109bff615ea6fcb50d1482f21d20ee50f46#sha256:62fc46aae8f0a4a33ce7f8d7726d7109bff615ea6fcb50d1482f21d20ee50f46",
+          "archive:https://github.com/ocaml-ppx/ocamlformat/releases/download/0.19.0/ocamlformat-0.19.0.tbz#sha256:62fc46aae8f0a4a33ce7f8d7726d7109bff615ea6fcb50d1482f21d20ee50f46"
         ],
         "opam": {
           "name": "ocamlformat-rpc",
-          "version": "0.20.1",
-          "path": "esy.lock/opam/ocamlformat-rpc.0.20.1"
+          "version": "0.19.0",
+          "path": "esy.lock/opam/ocamlformat-rpc.0.19.0"
         }
       },
       "overrides": [],
@@ -1138,19 +1139,18 @@
         "ocaml@4.13.1000@d41d8cd9", "@opam/uutf@opam:1.0.3@47c95a18",
         "@opam/uuseg@opam:14.0.0@7d21466b",
         "@opam/stdio@opam:v0.14.0@a5affb43", "@opam/re@opam:1.10.3@0585c65d",
-        "@opam/odoc-parser@opam:1.0.0@b1029bdf",
+        "@opam/odoc-parser@opam:0.9.0@53bf0585",
         "@opam/ocp-indent@opam:1.8.1@e32a3c50",
         "@opam/ocamlformat-rpc-lib@opam:0.19.0@125cf11d",
-        "@opam/ocaml-version@opam:3.4.0@b6cd49e1",
         "@opam/menhirSdk@opam:20220210@b8921e41",
         "@opam/menhirLib@opam:20220210@e6562f4f",
         "@opam/menhir@opam:20220210@ff87a93b",
         "@opam/fpath@opam:0.7.3@674d8125",
         "@opam/fix@opam:20220121@17b9a1a4",
-        "@opam/either@opam:1.0.0@be5a1416",
         "@opam/dune-build-info@opam:3.0.2@64b44bea",
         "@opam/dune@opam:3.0.2@5fec5392",
         "@opam/cmdliner@opam:1.0.4@93208aac",
+        "@opam/base-unix@opam:base@87d0b2eb",
         "@opam/base@opam:v0.14.3@b3ddb868",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
@@ -1158,36 +1158,35 @@
         "ocaml@4.13.1000@d41d8cd9", "@opam/uutf@opam:1.0.3@47c95a18",
         "@opam/uuseg@opam:14.0.0@7d21466b",
         "@opam/stdio@opam:v0.14.0@a5affb43", "@opam/re@opam:1.10.3@0585c65d",
-        "@opam/odoc-parser@opam:1.0.0@b1029bdf",
+        "@opam/odoc-parser@opam:0.9.0@53bf0585",
         "@opam/ocp-indent@opam:1.8.1@e32a3c50",
         "@opam/ocamlformat-rpc-lib@opam:0.19.0@125cf11d",
-        "@opam/ocaml-version@opam:3.4.0@b6cd49e1",
         "@opam/menhirSdk@opam:20220210@b8921e41",
         "@opam/menhirLib@opam:20220210@e6562f4f",
         "@opam/menhir@opam:20220210@ff87a93b",
         "@opam/fpath@opam:0.7.3@674d8125",
         "@opam/fix@opam:20220121@17b9a1a4",
-        "@opam/either@opam:1.0.0@be5a1416",
         "@opam/dune-build-info@opam:3.0.2@64b44bea",
         "@opam/dune@opam:3.0.2@5fec5392",
         "@opam/cmdliner@opam:1.0.4@93208aac",
+        "@opam/base-unix@opam:base@87d0b2eb",
         "@opam/base@opam:v0.14.3@b3ddb868"
       ]
     },
-    "@opam/ocamlformat@opam:0.20.1@30a05b69": {
-      "id": "@opam/ocamlformat@opam:0.20.1@30a05b69",
+    "@opam/ocamlformat@opam:0.20.0@c60fe68b": {
+      "id": "@opam/ocamlformat@opam:0.20.0@c60fe68b",
       "name": "@opam/ocamlformat",
-      "version": "opam:0.20.1",
+      "version": "opam:0.20.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/7d/7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235#sha256:7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235",
-          "archive:https://github.com/ocaml-ppx/ocamlformat/releases/download/0.20.1/ocamlformat-0.20.1.tbz#sha256:7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235"
+          "archive:https://opam.ocaml.org/cache/sha256/26/26d98d0a0c236c2c941386d6a9d1f935cd984a2b7eade9304b8dc372f8887e09#sha256:26d98d0a0c236c2c941386d6a9d1f935cd984a2b7eade9304b8dc372f8887e09",
+          "archive:https://github.com/ocaml-ppx/ocamlformat/releases/download/0.20.0/ocamlformat-0.20.0.tbz#sha256:26d98d0a0c236c2c941386d6a9d1f935cd984a2b7eade9304b8dc372f8887e09"
         ],
         "opam": {
           "name": "ocamlformat",
-          "version": "0.20.1",
-          "path": "esy.lock/opam/ocamlformat.0.20.1"
+          "version": "0.20.0",
+          "path": "esy.lock/opam/ocamlformat.0.20.0"
         }
       },
       "overrides": [],
@@ -1195,7 +1194,7 @@
         "ocaml@4.13.1000@d41d8cd9", "@opam/uutf@opam:1.0.3@47c95a18",
         "@opam/uuseg@opam:14.0.0@7d21466b",
         "@opam/stdio@opam:v0.14.0@a5affb43", "@opam/re@opam:1.10.3@0585c65d",
-        "@opam/odoc-parser@opam:1.0.0@b1029bdf",
+        "@opam/odoc-parser@opam:0.9.0@53bf0585",
         "@opam/ocp-indent@opam:1.8.1@e32a3c50",
         "@opam/ocaml-version@opam:3.4.0@b6cd49e1",
         "@opam/menhirSdk@opam:20220210@b8921e41",
@@ -1214,7 +1213,7 @@
         "ocaml@4.13.1000@d41d8cd9", "@opam/uutf@opam:1.0.3@47c95a18",
         "@opam/uuseg@opam:14.0.0@7d21466b",
         "@opam/stdio@opam:v0.14.0@a5affb43", "@opam/re@opam:1.10.3@0585c65d",
-        "@opam/odoc-parser@opam:1.0.0@b1029bdf",
+        "@opam/odoc-parser@opam:0.9.0@53bf0585",
         "@opam/ocp-indent@opam:1.8.1@e32a3c50",
         "@opam/ocaml-version@opam:3.4.0@b6cd49e1",
         "@opam/menhirSdk@opam:20220210@b8921e41",

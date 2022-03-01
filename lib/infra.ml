@@ -10,6 +10,18 @@ module Log = struct
 end
 
 module Environment = struct
+  let app_name =
+    try
+      let name = Unix.getenv "APP_NAME" in
+      if name <> "" then name else failwith "Empty APP_NAME is not allowed"
+    with
+    | Not_found ->
+      let () =
+        Log.warn
+          "APP_NAME environment variable is not set, fallback default value"
+      in
+      "auth.miage.rocks"
+
   let port =
     try Unix.getenv "PORT" |> int_of_string with
     | Failure _

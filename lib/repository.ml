@@ -4,31 +4,34 @@
 
 module E = Infra.Environment
 module D = Domain
-(*
-   module type MEMBER = sig
-     type ('res, 'err) query_result =
-       ('res, ([> Caqti_error.call_or_retrieve] as 'err)) result Lwt.t
 
-     val get_by_email_hash :
-       email:D.Email.t ->
-       hash:D.Hash.t ->
-       (D.Member.t, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
+module type MEMBER = sig
+  type ('res, 'err) query_result =
+    ('res, ([> Caqti_error.call_or_retrieve] as 'err)) result Lwt.t
 
-     val create :
-       id:D.Uuid.t ->
-       email:D.Email.t ->
-       hash:D.Hash.t ->
-       (unit, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
+  val get_by_email_hash :
+    email:D.Email.t ->
+    hash:D.Hash.t ->
+    (module Rapper_helper.CONNECTION) ->
+    (D.Member.t, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
 
-     val update :
-       email:D.Email.t ->
-       username:string option ->
-       hash:D.Hash.t ->
-       id:D.Uuid.t ->
-       (unit, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
-   end *)
+  val create :
+    id:D.Uuid.t ->
+    email:D.Email.t ->
+    hash:D.Hash.t ->
+    (module Rapper_helper.CONNECTION) ->
+    (unit, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
 
-module Member = struct
+  val update :
+    email:D.Email.t ->
+    username:string option ->
+    hash:D.Hash.t ->
+    id:D.Uuid.t ->
+    (module Rapper_helper.CONNECTION) ->
+    (unit, ([> Caqti_error.call_or_retrieve] as 'err)) query_result
+end
+
+module Member : MEMBER = struct
   module Uuid = struct
     type t = D.Uuid.t
 
