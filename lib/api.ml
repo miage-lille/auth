@@ -65,7 +65,7 @@ let signin_handler request =
 let routes =
   [
     Dream.get "/" hello_handler;
-    Dream.get "/echo" echo_handler;
+    Dream.post "/echo" echo_handler;
     Dream.post "/signup" signup_handler;
     Dream.post "/signin" signin_handler;
   ]
