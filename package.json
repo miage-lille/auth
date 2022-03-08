@@ -8,7 +8,6 @@
     },
     "dependencies": {
         "@opam/dream": "1.0.0~alpha3",
-        "@opam/caqti-driver-postgresql": "*",
         "@opam/caqti-driver-sqlite3": "*",
         "@opam/lwt": "*",
         "@opam/ppx_rapper_lwt": "*",
@@ -26,6 +25,10 @@
         "@opam/ocamlformat": "0.20.0",
         "@opam/ocaml-lsp-server": "*",
         "@opam/ocamlformat-rpc": "*"
+    },
+    "resolutions": {
+        "@opam/conf-libev": "esy-packages/libev:package.json#0b5eb6685b688649045aceac55dc559f6f21b829",
+        "esy-openssl": "esy-packages/esy-openssl#619ae2d46ca981ec26ab3287487ad98b157a01d1"
     },
     "esy": {
         "build": "dune build -p #{self.name}",
